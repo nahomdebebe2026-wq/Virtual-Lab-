@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ODA SBS</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e8f5e9; /* Light green background */
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #4caf50, #ffeb3b);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-bottom: 5px solid #4caf50;
+    }
+
+    header img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #fff;
+      margin: 0;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      background-color: #4caf50;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #388e3c;
+    }
+
+    /* Sidebar for Mobile */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -65%;
+      height: 100%;
+      width: 60%;
+      background-color: #4caf50;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      z-index: 1000;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #388e3c;
+      text-align: center;
+    }
+
+    .sidebar a:hover {
+      background-color: #2e7d32;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    /* Main Section */
+    main {
+      padding: 20px;
+    }
+
+    .main-section {
+      margin-bottom: 40px;
+      border: 3px solid #4caf50;
+      border-radius: 15px;
+      padding: 20px;
+      background: linear-gradient(45deg, #ffffff, #e8f5e9);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .main-section h2 {
+      color: #4caf50;
+    }
+
+    .main-section img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .main-section img:hover {
+      transform: scale(1.05);
+    }
+
+    .main-section p {
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* Unit Buttons (Vertical Alignment) */
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .unit-button {
+      padding: 15px 30px;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 250px;
+      text-align: center;
+      color: white;
+    }
+
+    .unit3 { background-color: #4caf50; }  /* Green */
+    .unit4 { background-color: #ffeb3b; color: #333; } /* Yellow */
+    .unit7 { background-color: #ff9800; } /* Orange */
+
+    .unit3:hover { background-color: #388e3c; }
+    .unit4:hover { background-color: #fdd835; }
+    .unit7:hover { background-color: #e65100; }
+
+    /* Footer */
+    footer {
+      background-color: #4caf50;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      border-top: 5px solid #ffeb3b;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .footer-section {
+      flex: 1 1 calc(25% - 40px);
+      min-width: 200px;
+    }
+
+    .footer-section h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .footer-section p, .footer-section ul {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 5px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .button-container {
+        width: 100%;
+      }
+
+      .unit-button {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Company Logo">
+      <h1>ODA SBS</h1>
+    </div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="About.html">About</a>
+
+    </nav>
+    <div class="menu-btn" id="menuBtn">☰</div>
+  </header>
+
+  <div class="sidebar" id="sidebar">
+    <a href="home.html">Home</a>
+    <a href="About.html">About</a>
+  </div>
+
+  <main>
+    <div class="main-section">
+      <h2>Welcome to ODA VIRTUAL LABORATORY</h2>
+      <img src="phet1.jpeg" alt="About ODA SBS">
+    </div>
+
+    <!-- Unit Buttons (Vertically Aligned) -->
+    <div class="button-container">
+      <button class="unit-button unit3" onclick="window.location.href='unit39.html'">Unit 3</button>
+      <button class="unit-button unit4" onclick="window.location.href='unit49.html'">Unit 4</button>
+      <button class="unit-button unit7" onclick="window.location.href='unit79.html'">Unit 7</button>
+    </div>
+  </main>
+
+  
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('sidebar');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
